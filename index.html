@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Karate Shiru Hageshi - Arte Marcial Tradicional</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@300;400;700&family=Crimson+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-red: #B91C1C;
+            --dark-bg: #0F0F0F;
+            --off-white: #F5F3EE;
+            --gold-accent: #D4AF37;
+            --shadow-red: rgba(185, 28, 28, 0.3);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--off-white);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(to bottom, rgba(15, 15, 15, 0.98), rgba(15, 15, 15, 0.85));
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: var(--primary-red);
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px var(--shadow-red);
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 20px var(--shadow-red); }
+            50% { text-shadow: 0 0 30px var(--shadow-red), 0 0 40px var(--shadow-red); }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--off-white);
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold-accent);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 0;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(185, 28, 28, 0.15), transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(212, 175, 55, 0.1), transparent 50%),
+                linear-gradient(135deg, #0F0F0F 0%, #1A1A1A 100%);
+            z-index: 0;
+        }
+
+        .hero-pattern {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 35px, var(--off-white) 35px, var(--off-white) 37px),
+                repeating-linear-gradient(-45deg, transparent, transparent 35px, var(--off-white) 35px, var(--off-white) 37px);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 2rem;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--gold-accent);
+            letter-spacing: 4px;
+            margin-bottom: 1rem;
+            font-weight: 300;
+            animation: fadeInUp 1.4s ease-out;
+        }
+
+        .hero-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 7rem;
+            color: var(--primary-red);
+            letter-spacing: 8px;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 40px var(--shadow-red);
+            animation: fadeInUp 1.6s ease-out;
+        }
+
+        .hero-description {
+            font-size: 1.3rem;
+            color: var(--off-white);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            font-weight: 300;
+            line-height: 1.8;
+            animation: fadeInUp 1.8s ease-out;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: var(--primary-red);
+            color: var(--off-white);
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 2px;
+            border: 2px solid var(--primary-red);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 2s ease-out;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gold-accent);
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .cta-button:hover::before {
+            left: 0;
+        }
+
+        .cta-button:hover {
+            border-color: var(--gold-accent);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Sections */
+        section {
+            padding: 8rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-subtitle {
+            color: var(--gold-accent);
+            letter-spacing: 3px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 4rem;
+            color: var(--off-white);
+            letter-spacing: 4px;
+        }
+
+        /* Philosophy Section */
+        .philosophy {
+            background: linear-gradient(135deg, #1A1A1A 0%, #0F0F0F 100%);
+            position: relative;
+        }
+
+        .philosophy-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .philosophy-text h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary-red);
+        }
+
+        .philosophy-text p {
+            font-size: 1.1rem;
+            line-height: 2;
+            margin-bottom: 1.5rem;
+            color: rgba(245, 243, 238, 0.85);
+        }
+
+        .philosophy-image {
+            position: relative;
+            height: 500px;
+            background: linear-gradient(45deg, var(--primary-red), var(--gold-accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .philosophy-image::before {
+            content: '白激';
+            font-size: 20rem;
+            font-weight: 700;
+            color: rgba(15, 15, 15, 0.5);
+            position: absolute;
+        }
+
+        /* Values Section */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+        }
+
+        .value-card {
+            background: rgba(26, 26, 26, 0.6);
+            padding: 3rem 2rem;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-red), var(--gold-accent));
+            transform: scaleX(0);
+            transition: var(--transition);
+        }
+
+        .value-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            background: rgba(26, 26, 26, 0.9);
+            box-shadow: 0 20px 40px rgba(185, 28, 28, 0.2);
+        }
+
+        .value-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .value-card h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            color: var(--gold-accent);
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .value-card p {
+            color: rgba(245, 243, 238, 0.8);
+            line-height: 1.8;
+        }
+
+        /* Classes Section */
+        .classes {
+            background: var(--dark-bg);
+        }
+
+        .classes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .class-card {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(15, 15, 15, 0.9));
+            border: 1px solid rgba(185, 28, 28, 0.3);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .class-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 20px 60px var(--shadow-red);
+        }
+
+        .class-header {
+            background: var(--primary-red);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .class-header h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            letter-spacing: 3px;
+        }
+
+        .class-body {
+            padding: 2rem;
+        }
+
+        .class-body ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .class-body li {
+            padding: 0.7rem 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            color: rgba(245, 243, 238, 0.85);
+        }
+
+        .class-body li:before {
+            content: '◆';
+            color: var(--gold-accent);
+            margin-right: 1rem;
+        }
+
+        /* Schedule Section */
+        .schedule {
+            background: linear-gradient(135deg, #1A1A1A 0%, #0F0F0F 100%);
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(26, 26, 26, 0.6);
+            overflow: hidden;
+        }
+
+        .schedule-table th {
+            background: var(--primary-red);
+            color: var(--off-white);
+            padding: 1.5rem;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3rem;
+            letter-spacing: 2px;
+        }
+
+        .schedule-table td {
+            padding: 1.5rem;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            text-align: center;
+        }
+
+        .schedule-table tr:hover {
+            background: rgba(185, 28, 28, 0.1);
+        }
+
+        /* Instructors Section */
+        .instructors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .instructor-card {
+            text-align: center;
+            background: rgba(26, 26, 26, 0.6);
+            padding: 3rem 2rem;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: var(--transition);
+        }
+
+        .instructor-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-red);
+        }
+
+        .instructor-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, var(--primary-red), var(--gold-accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            border: 4px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .instructor-card h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: var(--gold-accent);
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .instructor-rank {
+            color: var(--primary-red);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .instructor-card p {
+            color: rgba(245, 243, 238, 0.8);
+            line-height: 1.8;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--dark-bg);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+        }
+
+        .contact-info h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            color: var(--primary-red);
+            margin-bottom: 2rem;
+            letter-spacing: 3px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            gap: 1.5rem;
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            color: var(--gold-accent);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 0.5rem;
+            color: var(--gold-accent);
+            letter-spacing: 1px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 1rem;
+            background: rgba(26, 26, 26, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--off-white);
+            font-family: 'Noto Sans JP', sans-serif;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-red);
+            box-shadow: 0 0 20px var(--shadow-red);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            padding: 1.2rem;
+            background: var(--primary-red);
+            color: var(--off-white);
+            border: none;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .submit-btn:hover {
+            background: var(--gold-accent);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #0A0A0A;
+            padding: 3rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            color: var(--primary-red);
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+        }
+
+        .footer-text {
+            color: rgba(245, 243, 238, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 4rem;
+            }
+
+            .philosophy-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            section {
+                padding: 5rem 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">SHIRU HAGESHI</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">INICIO</a></li>
+                <li><a href="#filosofia">FILOSOFÍA</a></li>
+                <li><a href="#valores">VALORES</a></li>
+                <li><a href="#clases">CLASES</a></li>
+                <li><a href="#horarios">HORARIOS</a></li>
+                <li><a href="#instructores">INSTRUCTORES</a></li>
+                <li><a href="#contacto">CONTACTO</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-bg"></div>
+        <div class="hero-pattern"></div>
+        <div class="hero-content">
+            <p class="hero-subtitle">KARATE TRADICIONAL</p>
+            <h1 class="hero-title">SHIRU HAGESHI</h1>
+            <p class="hero-description">
+                Descubre el verdadero espíritu del karate. Fortalece tu cuerpo, disciplina tu mente y cultiva tu espíritu a través del arte marcial tradicional japonés.
+            </p>
+            <a href="#contacto" class="cta-button">COMIENZA TU CAMINO</a>
+        </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section class="philosophy" id="filosofia">
+        <div class="philosophy-content">
+            <div class="philosophy-text">
+                <h3>El Camino del Guerrero Blanco Intenso</h3>
+                <p>
+                    Shiru Hageshi (白激) significa "Blanco Intenso", representando la pureza del espíritu combinada con la intensidad del entrenamiento. Nuestro dojo se fundamenta en los principios tradicionales del karate-do, donde cada movimiento es una expresión de disciplina, respeto y perfección técnica.
+                </p>
+                <p>
+                    No solo enseñamos técnicas de combate, sino que cultivamos individuos completos. A través de la práctica constante, nuestros estudiantes desarrollan no solo habilidades físicas excepcionales, sino también un carácter firme, autocontrol y una mentalidad inquebrantable.
+                </p>
+                <p>
+                    El karate es un camino de vida que trasciende el tatami. Cada kata, cada kumite, cada momento de meditación construye no solo un artista marcial, sino una persona mejor preparada para enfrentar los desafíos de la vida cotidiana.
+                </p>
+            </div>
+            <div class="philosophy-image"></div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section id="valores">
+        <div class="section-header">
+            <p class="section-subtitle">NUESTROS PRINCIPIOS</p>
+            <h2 class="section-title">VALORES FUNDAMENTALES</h2>
+        </div>
+        <div class="values-grid">
+            <div class="value-card">
+                <span class="value-icon">🥋</span>
+                <h3>DISCIPLINA</h3>
+                <p>La base de todo progreso genuino. A través de la práctica rigurosa y constante, forjamos el carácter y desarrollamos la excelencia en cada técnica.</p>
+            </div>
+            <div class="value-card">
+                <span class="value-icon">🙏</span>
+                <h3>RESPETO</h3>
+                <p>Honramos a nuestros maestros, compañeros y adversarios. El respeto es el fundamento de toda relación en el dojo y en la vida.</p>
+            </div>
+            <div class="value-card">
+                <span class="value-icon">⚡</span>
+                <h3>PERSEVERANCIA</h3>
+                <p>El camino del karate no tiene final. Cada obstáculo es una oportunidad para crecer más fuerte y desarrollar una voluntad inquebrantable.</p>
+            </div>
+            <div class="value-card">
+                <span class="value-icon">🎯</span>
+                <h3>PRECISIÓN</h3>
+                <p>Cada movimiento debe ser perfecto. La búsqueda de la perfección técnica nos enseña la importancia del detalle y la excelencia.</p>
+            </div>
+            <div class="value-card">
+                <span class="value-icon">🧘</span>
+                <h3>AUTOCONTROL</h3>
+                <p>El verdadero poder reside en el control de uno mismo. Dominamos nuestras emociones y acciones con sabiduría y equilibrio.</p>
+            </div>
+            <div class="value-card">
+                <span class="value-icon">💪</span>
+                <h3>ESPÍRITU INDOMABLE</h3>
+                <p>Desarrollamos un espíritu que nunca se rinde, que enfrenta cada desafío con valentía y determinación absoluta.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Classes Section -->
+    <section class="classes" id="clases">
+        <div class="section-header">
+            <p class="section-subtitle">PROGRAMA DE ENTRENAMIENTO</p>
+            <h2 class="section-title">NUESTRAS CLASES</h2>
+        </div>
+        <div class="classes-grid">
+            <div class="class-card">
+                <div class="class-header">
+                    <h3>KARATE INFANTIL</h3>
+                </div>
+                <div class="class-body">
+                    <ul>
+                        <li>Edades de 6 a 12 años</li>
+                        <li>Desarrollo psicomotor</li>
+                        <li>Valores y disciplina</li>
+                        <li>Técnicas básicas y katas fundamentales</li>
+                        <li>Juegos educativos marciales</li>
+                    </ul>
+                    <p><strong>Horarios:</strong> Martes y Jueves 17:00 - 18:00</p>
+                </div>
+            </div>
+            <div class="class-card">
+                <div class="class-header">
+                    <h3>KARATE JUVENIL</h3>
+                </div>
+                <div class="class-body">
+                    <ul>
+                        <li>Edades de 13 a 17 años</li>
+                        <li>Técnicas intermedias y avanzadas</li>
+                        <li>Kumite controlado</li>
+                        <li>Preparación para competencias</li>
+                        <li>Fortalecimiento físico y mental</li>
+                    </ul>
+                    <p><strong>Horarios:</strong> Lunes, Miércoles y Viernes 18:00 - 19:30</p>
+                </div>
+            </div>
+            <div class="class-card">
+                <div class="class-header">
+                    <h3>KARATE ADULTOS</h3>
+                </div>
+                <div class="class-body">
+                    <ul>
+                        <li>A partir de 18 años</li>
+                        <li>Todos los niveles bienvenidos</li>
+                        <li>Defensa personal práctica</li>
+                        <li>Kata tradicionales avanzados</li>
+                        <li>Acondicionamiento integral</li>
+                    </ul>
+                    <p><strong>Horarios:</strong> Lunes, Miércoles y Viernes 19:30 - 21:00</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section class="schedule" id="horarios">
+        <div class="section-header">
+            <p class="section-subtitle">PLANIFICA TU ENTRENAMIENTO</p>
+            <h2 class="section-title">HORARIOS</h2>
+        </div>
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th>HORARIO</th>
+                    <th>LUNES</th>
+                    <th>MARTES</th>
+                    <th>MIÉRCOLES</th>
+                    <th>JUEVES</th>
+                    <th>VIERNES</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>17:00 - 18:00</strong></td>
+                    <td>-</td>
+                    <td>Infantil</td>
+                    <td>-</td>
+                    <td>Infantil</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td><strong>18:00 - 19:30</strong></td>
+                    <td>Juvenil</td>
+                    <td>-</td>
+                    <td>Juvenil</td>
+                    <td>-</td>
+                    <td>Juvenil</td>
+                </tr>
+                <tr>
+                    <td><strong>19:30 - 21:00</strong></td>
+                    <td>Adultos</td>
+                    <td>-</td>
+                    <td>Adultos</td>
+                    <td>-</td>
+                    <td>Adultos</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Instructors Section -->
+    <section id="instructores">
+        <div class="section-header">
+            <p class="section-subtitle">NUESTRO EQUIPO</p>
+            <h2 class="section-title">INSTRUCTORES</h2>
+        </div>
+        <div class="instructors-grid">
+            <div class="instructor-card">
+                <div class="instructor-photo">🥋</div>
+                <h3>SENSEI TAKESHI YAMAMOTO</h3>
+                <p class="instructor-rank">7º Dan - Cinturón Negro</p>
+                <p>Con más de 35 años de experiencia, Sensei Yamamoto es un maestro reconocido internacionalmente. Su conocimiento profundo del karate tradicional y su dedicación a la enseñanza han formado a generaciones de karatekas excepcionales.</p>
+            </div>
+            <div class="instructor-card">
+                <div class="instructor-photo">🥋</div>
+                <h3>SENSEI MARÍA RODRÍGUEZ</h3>
+                <p class="instructor-rank">5º Dan - Cinturón Negro</p>
+                <p>Especialista en karate infantil y juvenil, Sensei María combina técnicas pedagógicas modernas con la tradición marcial. Campeona nacional en múltiples ocasiones, su pasión por enseñar es inspiradora.</p>
+            </div>
+            <div class="instructor-card">
+                <div class="instructor-photo">🥋</div>
+                <h3>SEMPAI DIEGO CASTRO</h3>
+                <p class="instructor-rank">3º Dan - Cinturón Negro</p>
+                <p>Enfocado en kumite y preparación competitiva, Sempai Diego aporta energía y técnica dinámica. Su enfoque práctico en defensa personal lo hace un instructor valioso para todos los niveles.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contacto">
+        <div class="section-header">
+            <p class="section-subtitle">ÚNETE A NOSOTROS</p>
+            <h2 class="section-title">CONTACTO</h2>
+        </div>
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3>VISÍTANOS</h3>
+                <div class="contact-item">
+                    <span class="contact-icon">📍</span>
+                    <div>
+                        <strong>Dirección</strong><br>
+                        Av. Principal 1234, Centro<br>
+                        Santiago, Chile
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📞</span>
+                    <div>
+                        <strong>Teléfono</strong><br>
+                        +56 9 1234 5678
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">✉️</span>
+                    <div>
+                        <strong>Email</strong><br>
+                        info@shiruhageshi.cl
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">⏰</span>
+                    <div>
+                        <strong>Atención</strong><br>
+                        Lunes a Viernes: 16:00 - 21:00<br>
+                        Sábados: 09:00 - 13:00
+                    </div>
+                </div>
+            </div>
+            <form class="contact-form" onsubmit="return handleSubmit(event)">
+                <div class="form-group">
+                    <label for="nombre">Nombre Completo</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono" required>
+                </div>
+                <div class="form-group">
+                    <label for="mensaje">Mensaje</label>
+                    <textarea id="mensaje" name="mensaje" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">ENVIAR MENSAJE</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">SHIRU HAGESHI</div>
+            <p class="footer-text">© 2025 Club Karate Shiru Hageshi. Todos los derechos reservados.</p>
+            <p class="footer-text">El camino del guerrero comienza con un solo paso.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('¡Gracias por tu interés! Nos pondremos en contacto contigo pronto.');
+            event.target.reset();
+            return false;
+        }
+
+        // Add scroll effect to header
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                header.style.padding = '0.8rem 5%';
+            } else {
+                header.style.padding = '1.2rem 5%';
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section:not(.hero)').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
